@@ -27,10 +27,8 @@ public class BeerStyle implements Serializable {
 
 	@Enumerated(EnumType.STRING)
 	@Column(name = "BEER_STYLES")
+	// So nicht erweiterbar - zu String aendern
 	private BeerStyles beerStyles;
-
-	@OneToOne(fetch = FetchType.LAZY, mappedBy = "beerStyle")
-	private Beer beer;
 
 	public BeerStyle() {
 
