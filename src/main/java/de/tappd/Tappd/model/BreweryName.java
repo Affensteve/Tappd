@@ -19,16 +19,17 @@ public class BreweryName implements Serializable {
 
 	@Id
 	@GeneratedValue
-	@Column(name = "BEWERY_NAME_ID")
+	@Column(name = "Brewery_Name_ID")
 	private long id;
 
 	@Column(name = "brewery_name")
 	private String breweryName;
 
 	
-	@ManyToOne(fetch=FetchType.LAZY)
-	@JoinColumn(name="bewerey_name_id")
-	private Beer beer;
+	@OneToMany()
+	// todo gucken wie richtig
+	@JoinTable(name="beer_id")
+	private List<Beer> beer;
 	
 	public BreweryName() {
 	}
