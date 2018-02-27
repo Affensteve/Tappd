@@ -21,37 +21,33 @@ public class Beer implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "BEER_ID")
 	private long id;
 
-	@Column(name = "name")
 	private String name;
 
-	@OneToOne(optional = false, cascade = CascadeType.ALL, fetch=FetchType.LAZY)
+	@ManyToOne(optional = false, cascade = CascadeType.ALL)
 	@JoinColumn(name = "BEER_STYLE_ID")
 	private BeerStyle beerStyle;
 
-	@OneToMany(cascade = CascadeType.ALL, mappedBy="beer")
+	@ManyToMany(cascade = CascadeType.ALL, mappedBy="beer")
+	//@JoinTable() inversiv columns und 'nornale'
 	private List<BreweryName> breweryName;
 
-	@Column(name = "color")
 	private String color;
 
-	@Column(name = "abv")
-	private Integer abv;
+	private Double abv;
 
-	@Column(name = "ibu")
-	private Integer ibu;
+	private Double ibu;
 
-	@Column(name = "rating")
-	private Integer rating;
+	private Double rating;
 
 	protected Beer() {
 	}
 
 	public Beer(String name, BeerStyle beerStyle, List<BreweryName> breweryName, String color, Integer abv, Integer ibu,
-			Integer rating) {
+			Double rating) {
 		this.name = name;
 		this.beerStyle = beerStyle;
 		this.breweryName = breweryName;
@@ -93,27 +89,27 @@ public class Beer implements Serializable {
 		this.color = color;
 	}
 
-	public Integer getAbv() {
+	public Double getAbv() {
 		return abv;
 	}
 
-	public void setAbv(Integer abv) {
+	public void setAbv(Double abv) {
 		this.abv = abv;
 	}
 
-	public Integer getIbu() {
+	public Double getIbu() {
 		return ibu;
 	}
 
-	public void setIbu(Integer ibu) {
+	public void setIbu(Double ibu) {
 		this.ibu = ibu;
 	}
 
-	public Integer getRating() {
+	public Double getRating() {
 		return rating;
 	}
 
-	public void setRating(Integer rating) {
+	public void setRating(Double rating) {
 		this.rating = rating;
 	}
 
