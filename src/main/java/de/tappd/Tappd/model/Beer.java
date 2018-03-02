@@ -1,17 +1,15 @@
 package de.tappd.Tappd.model;
 
 import java.io.Serializable;
-import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -22,8 +20,8 @@ public class Beer implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name = "BEER_ID")
-	private long id;
+	@Column(name = "ID")
+	private Long id;
 
 	private String name;
 
@@ -31,9 +29,9 @@ public class Beer implements Serializable {
 	@JoinColumn(name = "BEER_STYLE_ID")
 	private BeerStyle beerStyle;
 
-	@ManyToMany(cascade = CascadeType.ALL, mappedBy="beer")
-	//@JoinTable() inversiv columns und 'nornale'
-	private List<BreweryName> breweryName;
+	@ManyToOne(optional = false, cascade = CascadeType.ALL)
+	@JoinColumn(name = "Brewery_Name_ID")
+	private Brewery breweryName;
 
 	private String color;
 
@@ -46,7 +44,7 @@ public class Beer implements Serializable {
 	protected Beer() {
 	}
 
-	public Beer(String name, BeerStyle beerStyle, List<BreweryName> breweryName, String color, Integer abv, Integer ibu,
+	public Beer(String name, BeerStyle beerStyle, Brewery breweryName, String color, Double abv, Double ibu,
 			Double rating) {
 		this.name = name;
 		this.beerStyle = beerStyle;
@@ -73,11 +71,11 @@ public class Beer implements Serializable {
 		this.beerStyle = beerStyle;
 	}
 
-	public List<BreweryName> getBreweryName() {
+	public Brewery getBreweryName() {
 		return breweryName;
 	}
 
-	public void setBreweryName(List<BreweryName> breweryName) {
+	public void setBreweryName(Brewery breweryName) {
 		this.breweryName = breweryName;
 	}
 
@@ -113,8 +111,15 @@ public class Beer implements Serializable {
 		this.rating = rating;
 	}
 
-	public long getId() {
+	public Long getId() {
 		return id;
+	}
+
+	@Override
+	public String toString() {
+		return String.format(
+				"Beer[id=%d, name='%s', beerStyle='%s', breweryName='%s', color='%s', abv='%d',ibu='%d',rating='%d']",
+				id, name, beerStyle, breweryName, color, abv, ibu, rating);
 	}
 
 }

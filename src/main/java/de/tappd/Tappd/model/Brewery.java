@@ -1,41 +1,34 @@
 package de.tappd.Tappd.model;
 
 import java.io.Serializable;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "BreweryName")
-public class BreweryName implements Serializable {
+@Table(name = "Brewery")
+public class Brewery implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue
-	@Column(name = "Brewery_Name_ID")
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
 
-	@Column(name = "brewery_name")
 	private String breweryName;
 
-	
-	@OneToMany()
-	// todo gucken wie richtig
-	@JoinTable(name="beer_id")
-	private List<Beer> beer;
-	
-	public BreweryName() {
+	protected Brewery() {
 	}
 
-	public BreweryName(String breweryName) {
-		super();
+	public Brewery(String breweryName) {
 		this.breweryName = breweryName;
 	}
 
@@ -49,6 +42,11 @@ public class BreweryName implements Serializable {
 
 	public long getId() {
 		return id;
+	}
+
+	@Override
+	public String toString() {
+		return String.format("Brewery[id=%d, breweryName='%s']", id, breweryName);
 	}
 
 }

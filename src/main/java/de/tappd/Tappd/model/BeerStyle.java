@@ -8,6 +8,7 @@ import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
@@ -21,33 +22,33 @@ public class BeerStyle implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue
-	@Column(name = "BEER_STYLE_ID")
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
 
-	@Enumerated(EnumType.STRING)
-	@Column(name = "BEER_STYLES")
-	// So nicht erweiterbar - zu String aendern
-	private BeerStyles beerStyles;
+	private String beerStyles;
 
-	public BeerStyle() {
-
+	protected BeerStyle() {
 	}
 
-	public BeerStyle(BeerStyles beerStyles) {
+	public BeerStyle(String beerStyles) {
 		this.beerStyles = beerStyles;
 	}
 
-	public BeerStyles getBeerStyles() {
+	public String getBeerStyles() {
 		return beerStyles;
 	}
 
-	public void setBeerStyles(BeerStyles beerStyles) {
+	public void setBeerStyles(String beerStyles) {
 		this.beerStyles = beerStyles;
 	}
 
 	public long getId() {
 		return id;
+	}
+
+	@Override
+	public String toString() {
+		return String.format("BeerStyle[id=%d, beerStyles='%s']", id, beerStyles);
 	}
 
 }
