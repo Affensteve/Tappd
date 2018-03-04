@@ -1,5 +1,7 @@
 package de.tappd.Tappd.UI;
 
+import java.util.Arrays;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.StringUtils;
 
@@ -16,7 +18,10 @@ import com.vaadin.ui.TextField;
 import com.vaadin.ui.UI;
 import com.vaadin.ui.VerticalLayout;
 
+import de.tappd.Tappd.UI.Editor.BeerEditor;
 import de.tappd.Tappd.model.Beer;
+import de.tappd.Tappd.model.BeerStyle;
+import de.tappd.Tappd.model.Brewery;
 import de.tappd.Tappd.repo.BeerRepository;
 
 @SpringUI
@@ -25,7 +30,7 @@ public class TappdUI extends UI {
 
 	private final BeerRepository repo;
 
-	// private final BeerEditor editor;
+	private final BeerEditor editor;
 
 	final Grid<Beer> grid;
 
@@ -34,9 +39,9 @@ public class TappdUI extends UI {
 	private final Button addNewBtn;
 
 	@Autowired
-	public TappdUI(BeerRepository repo/* , BeerEditor editor */) {
+	public TappdUI(BeerRepository repo, BeerEditor editor) {
 		this.repo = repo;
-		// this.editor = editor;
+		this.editor = editor;
 		this.grid = new Grid<>(Beer.class);
 		this.filter = new TextField();
 		this.addNewBtn = new Button("New beer", FontAwesome.PLUS);
@@ -47,10 +52,11 @@ public class TappdUI extends UI {
 		// build layout
 		HorizontalLayout heading = new HorizontalLayout(new Label("Brau-Kunz' Biergarten"));
 		HorizontalLayout actions = new HorizontalLayout(filter, addNewBtn);
-		VerticalLayout mainLayout = new VerticalLayout(heading, actions, grid);
+		VerticalLayout mainLayout = new VerticalLayout(heading, actions, grid, editor);
 		setContent(mainLayout);
 
 		grid.setHeight(500, Unit.PIXELS);
+		grid.setWidth(1250, Unit.PIXELS);
 		grid.setColumns("id", "name", "beerStyle", "breweryName", "color", "abv", "ibu", "rating");
 
 		filter.setPlaceholder("Filter by name");
@@ -62,22 +68,20 @@ public class TappdUI extends UI {
 		filter.addValueChangeListener(e -> listBeers(e.getValue()));
 
 		// Connect selected Customer to editor or hide if none is selected
-		// grid.asSingleSelect().addValueChangeListener(e -> {
-		// editor.editBeer(e.getValue());
-		// });
+		grid.asSingleSelect().addValueChangeListener(e -> {
+			editor.editBeer(e.getValue());
+		});
 
 		// Instantiate and edit new Customer the new button is clicked
 		// String name, BeerStyle beerStyle, List<BreweryName> breweryName, String
 		// color, Double abv, Double ibu,Double rating
-		// addNewBtn.addClickListener(e -> editor
-		// .editBeer(new Beer("", new BeerStyle(), Arrays.asList(new BreweryName("")),
-		// "", 0.0, 0.0, 0.0)));
+		addNewBtn.addClickListener(e -> editor.editBeer(new Beer("", "", 0.0, 0.0, 0.0)));
 
 		// Listen changes made by the editor, refresh data from backend
-		// editor.setChangeHandler(() -> {
-		// editor.setVisible(false);
-		// listBeers(filter.getValue());
-		// });
+		editor.setChangeHandler(() -> {
+			editor.setVisible(false);
+			listBeers(filter.getValue());
+		});
 
 		// Initialize listing
 		listBeers(null);

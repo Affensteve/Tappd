@@ -12,26 +12,13 @@ import de.tappd.Tappd.repo.BreweryNameRepository;
 
 @SpringBootApplication
 @ComponentScan("de.tappd.Tappd")
-public class TappdApplication implements CommandLineRunner {
+public class TappdApplication {
 
 	@Autowired
 	BeerRepository repository;
-
-	@Autowired
-	BeerStyleRepository beerStyleRepository;
-
-	@Autowired
-	BreweryNameRepository breweryNameRepository;
 
 	public static void main(String[] args) {
 		SpringApplication.run(TappdApplication.class, args);
 	}
 
-	@Override
-	public void run(String... arg0) throws Exception {
-		// clear all record if existed before do the tutorial with new data
-		repository.deleteAll();
-		beerStyleRepository.deleteAll();
-		breweryNameRepository.deleteAll();
-	}
 }

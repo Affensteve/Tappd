@@ -12,6 +12,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import de.tappd.Tappd.model.style.BeerStyles;
+
 @Entity
 @Table(name = "Beer")
 public class Beer implements Serializable {
@@ -54,6 +56,18 @@ public class Beer implements Serializable {
 		this.ibu = ibu;
 		this.rating = rating;
 	}
+	
+	public Beer(String name, String color, Double abv, Double ibu,
+			Double rating) {
+		this.name = name;
+		this.beerStyle = new BeerStyle(BeerStyles.IPA_AMERICAN.displayName());
+		this.breweryName = new Brewery("Barnstedter Brau-Kunz");
+		this.color = color;
+		this.abv = abv;
+		this.ibu = ibu;
+		this.rating = rating;
+	}
+
 
 	public String getName() {
 		return name;

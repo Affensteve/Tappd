@@ -39,8 +39,13 @@ dependencies {
     compile("org.springframework.boot:spring-boot-starter-thymeleaf")
 	compile('org.springframework.boot:spring-boot-devtools')
 	compile('com.vaadin:vaadin-spring-boot-starter')
+	compile("org.springframework.boot:spring-boot-starter-security")
+	
+	compile group: 'net.sourceforge.nekohtml', name: 'nekohtml', version: '1.9.22'
+	
 	
 	runtime('org.postgresql:postgresql')
+	
 	testCompile('org.springframework.boot:spring-boot-starter-test')
 }
 

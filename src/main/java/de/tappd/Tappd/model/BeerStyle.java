@@ -48,7 +48,7 @@ public class BeerStyle implements Serializable {
 
 	@Override
 	public String toString() {
-		return String.format("BeerStyle[id=%d, beerStyles='%s']", id, beerStyles);
+		return beerStyles;
 	}
 
 }
