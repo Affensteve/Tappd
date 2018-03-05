@@ -1,6 +1,7 @@
 package de.tappd.Tappd.UI.Editor;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,10 +13,13 @@ import com.vaadin.server.FontAwesome;
 import com.vaadin.spring.annotation.SpringComponent;
 import com.vaadin.spring.annotation.UIScope;
 import com.vaadin.ui.Button;
+import com.vaadin.ui.ComboBox;
 import com.vaadin.ui.Component;
 import com.vaadin.ui.CssLayout;
+import com.vaadin.ui.FormLayout;
 import com.vaadin.ui.TextField;
 import com.vaadin.ui.VerticalLayout;
+import com.vaadin.ui.Window;
 import com.vaadin.ui.themes.ValoTheme;
 
 import de.tappd.Tappd.model.Beer;
@@ -49,8 +53,8 @@ public class BeerEditor extends VerticalLayout {
 
 	/* Fields to edit properties in Customer entity */
 	TextField name = new TextField("Name");
-	// TextField beerStyle = new TextField("Beer Style");
-	// TextField breweryName = new TextField("Brewery name");
+	ComboBox<BeerStyle> beerStyle = new ComboBox<>("Beer Style");
+	ComboBox<Brewery> breweryName = new ComboBox<>("Brewery name");
 	TextField color = new TextField("Color");
 
 	TextField abv = new TextField("ABV");
@@ -58,9 +62,12 @@ public class BeerEditor extends VerticalLayout {
 	TextField rating = new TextField("Rating");
 
 	/* Action buttons */
+	@SuppressWarnings("deprecation")
 	Button save = new Button("Save", FontAwesome.SAVE);
 	Button cancel = new Button("Cancel");
+	@SuppressWarnings("deprecation")
 	Button delete = new Button("Delete", FontAwesome.TRASH_O);
+
 	CssLayout actions = new CssLayout(save, cancel, delete);
 
 	Binder<Beer> binder = new Binder<>(Beer.class);
@@ -98,7 +105,45 @@ public class BeerEditor extends VerticalLayout {
 		binder.bindInstanceFields(this);
 		binder.setBean(beer);
 
-		addComponents(name/* , beerStyle, breweryName */, color, abv, ibu, rating, actions);
+		List<BeerStyle> stylerList = beerStyleRepository.findAll();
+		beerStyle.setItems(stylerList);
+
+		// Use the name property for item captions
+		beerStyle.setItemCaptionGenerator(BeerStyle::getBeerStyles);
+
+		// Allow adding new items and add
+		// handling for new items
+		beerStyle.setNewItemHandler(inputString -> {
+			BeerStyle newStyle = new BeerStyle(inputString);
+			stylerList.add(newStyle);
+
+			// Update combobox content
+			beerStyle.setItems(stylerList);
+
+			// Remember to set the selection to the new item
+			beerStyle.setSelectedItem(newStyle);
+		});
+
+		List<Brewery> breweryList = breweryRepository.findAll();
+		breweryName.setItems(breweryList);
+
+		// Use the name property for item captions
+		breweryName.setItemCaptionGenerator(Brewery::getBreweryName);
+
+		// Allow adding new items and add
+		// handling for new items
+		breweryName.setNewItemHandler(inputString -> {
+			Brewery newOne = new Brewery(inputString);
+			breweryList.add(newOne);
+
+			// Update combobox content
+			breweryName.setItems(breweryList);
+
+			// Remember to set the selection to the new item
+			breweryName.setSelectedItem(newOne);
+		});
+
+		addComponents(name, beerStyle, breweryName, color, abv, ibu, rating, actions);
 
 		// Configure and style components
 		setSpacing(true);
@@ -110,8 +155,8 @@ public class BeerEditor extends VerticalLayout {
 		save.addClickListener(e -> {
 			beerStyleRepository.save(new BeerStyle(beer.getBeerStyle().toString()));
 			breweryRepository.save(new Brewery(beer.getBreweryName().toString()));
-			beerRepository
-					.save(new Beer(beer.getName(), beer.getColor(), beer.getAbv(), beer.getIbu(), beer.getRating()));
+			beerRepository.save(new Beer(beer.getName(), beer.getBeerStyle(), beer.getBreweryName(), beer.getColor(),
+					beer.getAbv(), beer.getIbu(), beer.getRating()));
 
 		});
 		delete.addClickListener(e -> repository.delete(beer));
@@ -147,12 +192,17 @@ public class BeerEditor extends VerticalLayout {
 		// moving values from fields to entities before saving
 		binder.setBean(beer);
 
+		// setVisible(true);
 		setVisible(true);
 
 		// A hack to ensure the whole form is visible
 		save.focus();
 		// Select all text in name field automatically
 		name.selectAll();
+	}
+
+	public final void deleteBeer(Beer beer) {
+		beerRepository.delete(beer);
 	}
 
 	public void setChangeHandler(ChangeHandler h) {

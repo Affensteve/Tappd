@@ -16,7 +16,7 @@ apply plugin: 'idea'
 apply plugin: 'org.springframework.boot'
 
 jar {
-    baseName = 'gs-serving-web-content'
+    baseName = 'de.tappd'
     version =  '0.1.0'
 }
 
@@ -36,13 +36,8 @@ ext {
 dependencies {
 	compile('org.springframework.boot:spring-boot-starter-data-jpa')
 	compile('org.springframework.boot:spring-boot-starter-web')
-    compile("org.springframework.boot:spring-boot-starter-thymeleaf")
 	compile('org.springframework.boot:spring-boot-devtools')
 	compile('com.vaadin:vaadin-spring-boot-starter')
-	compile("org.springframework.boot:spring-boot-starter-security")
-	
-	compile group: 'net.sourceforge.nekohtml', name: 'nekohtml', version: '1.9.22'
-	
 	
 	runtime('org.postgresql:postgresql')
 	

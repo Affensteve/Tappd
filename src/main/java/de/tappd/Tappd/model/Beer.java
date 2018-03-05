@@ -57,18 +57,6 @@ public class Beer implements Serializable {
 		this.rating = rating;
 	}
 	
-	public Beer(String name, String color, Double abv, Double ibu,
-			Double rating) {
-		this.name = name;
-		this.beerStyle = new BeerStyle(BeerStyles.IPA_AMERICAN.displayName());
-		this.breweryName = new Brewery("Barnstedter Brau-Kunz");
-		this.color = color;
-		this.abv = abv;
-		this.ibu = ibu;
-		this.rating = rating;
-	}
-
-
 	public String getName() {
 		return name;
 	}
