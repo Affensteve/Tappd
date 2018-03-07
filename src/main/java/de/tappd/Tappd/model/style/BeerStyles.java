@@ -59,6 +59,7 @@ public enum BeerStyles {
 	IPA_INTERNATIONAL("IPA - International"),
 	IPA_NEW_ENGLAND("IPA - New England"),
 	IPA_RED("IPA - Red"),
+	IPA_RYE("IPA - Rye"),
 	IPA_SESSION_INDIA_SESSION_ALE("IPA - Session / India Session Ale"),
 	IPA_TRIPLE("IPA - Triple"),
 	IPA_WHITE("IPA - White"),
