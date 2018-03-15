@@ -33,6 +33,7 @@ import com.vaadin.ui.themes.ValoTheme;
 import de.tappd.Tappd.model.Beer;
 import de.tappd.Tappd.model.BeerStyle;
 import de.tappd.Tappd.model.Brewery;
+import de.tappd.Tappd.process.BeerProcess;
 import de.tappd.Tappd.repo.BeerRepository;
 import de.tappd.Tappd.repo.BeerStyleRepository;
 import de.tappd.Tappd.repo.BreweryNameRepository;
@@ -75,6 +76,9 @@ public class TappdUI extends UI {
 
 	Binder<Beer> binder = new Binder<>(Beer.class);
 
+	@Autowired
+	BeerProcess beerProcess;
+
 	/**
 	 * Used for workaround for Vaadin issue #8858 'Binder.bindInstanceFields()
 	 * overwrites existing bindings' https://github.com/vaadin/framework/issues/8858
@@ -116,19 +120,7 @@ public class TappdUI extends UI {
 
 		// wire action buttons to save, cancel
 		save.addClickListener(e -> {
-			if (beerStyleRepository
-					.findByBeerStylesStartsWithIgnoreCase(editBeer.getBeerStyle().getBeerStyles()) != null) {
-				beerStyleRepository.save(new BeerStyle(editBeer.getBeerStyle().getBeerStyles()));
-			} else {
-				beerStyleRepository.save(editBeer.getBeerStyle());
-			}
-			if (breweryRepository
-					.findByBreweryNameStartsWithIgnoreCase(editBeer.getBreweryName().getBreweryName()) != null) {
-				breweryRepository.save(new Brewery(editBeer.getBreweryName().getBreweryName()));
-			} else {
-				breweryRepository.save(editBeer.getBreweryName());
-			}
-			repo.save(editBeer);
+			beerProcess.saveBeer(editBeer);
 			removeWindow(window);
 			listBeers(filter.getValue());
 		});
@@ -233,7 +225,8 @@ public class TappdUI extends UI {
 		// Instantiate and edit new Customer the new button is clicked
 		// String name, BeerStyle beerStyle, List<BreweryName> breweryName, String
 		// color, Double abv, Double ibu,Double rating
-		addNewBtn.addClickListener(e -> editBeer(new Beer("", new BeerStyle(""), new Brewery(""), "", 0.0, 0.0, 0.0), "New Beer"));
+		addNewBtn.addClickListener(
+				e -> editBeer(new Beer("", new BeerStyle(""), new Brewery(""), "", 0.0, 0.0, 0.0), "New Beer"));
 
 		addEditBtn.addClickListener(e -> editBeer(editBeer, "Edit Beer"));
 		addDeleteBtn.addClickListener(e -> {
