@@ -1,7 +1,8 @@
 package de.tappd.Tappd.process;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -30,16 +31,23 @@ public class BeerProcess {
 
 	@Transactional
 	public Beer saveBeer(Beer beer) {
-		if (beerStyleRepository.findByBeerStylesStartsWithIgnoreCase(beer.getBeerStyle().getBeerStyles()) != null) {
-			beerStyleRepository.save(new BeerStyle(beer.getBeerStyle().getBeerStyles()));
+		List<BeerStyle> foundBeerStyles = beerStyleRepository.findByBeerStylesStartsWithIgnoreCase(beer.getBeerStyle().getBeerStyles());
+		if (foundBeerStyles.isEmpty()) {
+			 beerStyleRepository.save(beer.getBeerStyle());
 		} else {
-			beerStyleRepository.save(beer.getBeerStyle());
+			//attach Beerstyle
+			BeerStyle attachedBeerStyle = beerStyleRepository.getOne(beer.getBeerStyle().getId());
+			beer.setBeerStyle(attachedBeerStyle);
 		}
-		if (breweryRepository.findByBreweryNameStartsWithIgnoreCase(beer.getBreweryName().getBreweryName()) != null) {
-			breweryRepository.save(new Brewery(beer.getBreweryName().getBreweryName()));
-		} else {
+		List<Brewery> foundBreweries = breweryRepository.findByBreweryNameStartsWithIgnoreCase(beer.getBreweryName().getBreweryName());
+		if (foundBreweries.isEmpty()) {
 			breweryRepository.save(beer.getBreweryName());
+		} else {
+			//attach Beerstyle
+			Brewery attachedBrewery = breweryRepository.getOne(beer.getBreweryName().getId());
+			beer.setBreweryName(attachedBrewery);
 		}
 		return repo.save(beer);
 	}
+	
 }

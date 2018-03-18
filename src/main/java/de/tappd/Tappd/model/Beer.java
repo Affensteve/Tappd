@@ -2,7 +2,6 @@ package de.tappd.Tappd.model;
 
 import java.io.Serializable;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -11,8 +10,6 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-
-import de.tappd.Tappd.model.style.BeerStyles;
 
 @Entity
 @Table(name = "Beer")
@@ -27,11 +24,11 @@ public class Beer implements Serializable {
 
 	private String name;
 
-	@ManyToOne(optional = false, cascade = CascadeType.ALL)
+	@ManyToOne(optional = false)
 	@JoinColumn(name = "BEER_STYLE_ID")
 	private BeerStyle beerStyle;
 
-	@ManyToOne(optional = false, cascade = CascadeType.ALL)
+	@ManyToOne(optional = false)
 	@JoinColumn(name = "Brewery_Name_ID")
 	private Brewery breweryName;
 

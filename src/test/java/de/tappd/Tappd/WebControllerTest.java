@@ -26,20 +26,20 @@ public class WebControllerTest {
     public void getEveryBeerStyleIsCreatingWellDone() throws Exception {
         mvc.perform(MockMvcRequestBuilders.get("/rest/style").accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
-                .andExpect(content().string(equalTo("169 Beer-Styles imported")));
+                .andExpect(content().string(equalTo("170 Beer-Styles imported")));
     }
     
     @Test
     public void getEveryBreweryIsCreatingWellDone() throws Exception {
         mvc.perform(MockMvcRequestBuilders.get("/rest/brewery").accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
-                .andExpect(content().string(equalTo("295 Breweries created")));
+                .andExpect(content().string(equalTo("297 Breweries created")));
     }
     
     @Test
     public void getEveryBeerIsCreatingWellDone() throws Exception {
         mvc.perform(MockMvcRequestBuilders.get("/rest/beer").accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
-                .andExpect(content().string(equalTo("Done")));
+                .andExpect(content().string(equalTo("200 beers drunk")));
     }
 }
