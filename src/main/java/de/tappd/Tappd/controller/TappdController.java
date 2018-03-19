@@ -244,7 +244,60 @@ public class TappdController {
 				addNewBeer("Fire Rock", "Pale Ale - American", "Kona Brewing Company", "Heller Bernstein", 5.8, 35.0, 3.75), 
 				addNewBeer("Cherry Pie", "Belgian Dubbel", "Ratsherrn Brauerei", "Rötlicher Bernstein", 7.5, 24.0, 3.75), 
 				addNewBeer("Hamburger Senatsbock (2018 Edition)", "Doppelbock", "Ratsherrn Brauerei", "Schwarz", 7.3, 40.0, 3.75), 
-				addNewBeer("Jail Break - New England IPA", "IPA - New England", "Next Level Brewing", "Bernstein", 5.8, 35.0, 4.25)
+				addNewBeer("Jail Break - New England IPA", "IPA - New England", "Next Level Brewing", "Bernstein", 5.8, 35.0, 4.25),
+				//
+				addNewBeer("Hacker-Pschorr Münchner Kellerbier - Anno 1417", "Kellerbier / Zwickelbier", "Hacker-Pschorr", "Heller Bernstein", 5.5, 15.0, 3.75),
+				addNewBeer("Kaventsmann", "Porter - Baltic", "Ratsherrn Brauerei", "Dunkler Bernstein", 6.6, 32.0, 3.75),
+				addNewBeer("Übersee Hopfen - Japan", "IPA - International", "Rügener Insel-Brauerei", "Bernstein", 5.5, 0.0, 3.75),
+				addNewBeer("Uprising", "IPA - American", "Dry & Bitter Brewing Company", "Bernstein", 6.5, 0.0, 3.75),
+				addNewBeer("5,0 Original Pils", "Pilsner - German", "Brauerei Braunschweig", "Heller Bernstein", 5.0, 0.0, 3.5),
+				addNewBeer("Grimbergen Blonde", "Blonde Ale - Belgian Blonde / Golden", "Brouwerij Alken-Maes", "Heller Bernstein", 6.7, 22.0, 3.5),
+				addNewBeer("Mythos", "Lager - Pale", "Olympic Brewery", "Heller Bernstein", 5.0, 0.0, 3.5),
+				addNewBeer("Hopfenfänger Kräusen", "Kellerbier / Zwickelbier", "Bremer Braumanufaktur", "Heller Bernstein", 5.2, 0.0, 3.5),
+				addNewBeer("Porter", "Porter - Baltic", "BRLO", "Dunkler Bernstein", 7.0, 35.0, 3.5),
+				addNewBeer("Surfers Ale", "Pale Ale - American", "Hopfmeister", "Heller Bernstein", 5.3, 35.0, 3.5),
+				addNewBeer("Corona Extra", "Lager - North American Adjunct", "Grupo Modelo", "Heller Bernstein", 4.5, 19.0, 3.5),
+				addNewBeer("Black Shark", "IPA - Imperial / Double Black", "Camba Bavaria", "Bernstein", 8.5, 120.0, 3.5),
+				addNewBeer("Löwenbräu Oktoberfestbier", "Festbier", "Spaten-Franziskaner-Löwenbräu-Gruppe", "Heller Bernstein", 6.1, 23.0, 3.5),
+				addNewBeer("Einbecker Ur-Bock Dunkel", "Bock", "Einbecker Brauhaus", "Schwarz", 6.5, 36.0, 3.5),
+				addNewBeer("St. Stephans Bock", "Doppelbock", "Privat-Brauerei Zötler", "Schwarz", 7.1, 25.0, 3.5),
+				addNewBeer("Schwarz-Bier", "Schwarzbier", "Störtebeker Braumanufaktur", "Schwarz", 5.0, 0.0, 3.5),
+				addNewBeer("Baltik-Lager", "Lager - Vienna", "Störtebeker Braumanufaktur", "Heller Bernstein", 5.5, 22.0, 3.5),
+				addNewBeer("Hopfenstopfer Incedible Pale Ale", "IPA - American", "Häffner Bräu - Hopfenstopfer", "Bernstein", 6.1, 55.0, 3.5),
+				addNewBeer("Bock O'Range", "Bock", "Wildwuchs Brauwerk", "Schwarz", 7.9, 45.0, 3.5),
+				addNewBeer("Auris 19", "Maibock / Heller (Helles) Bock", "Brauhaus Riegele", "Heller Bernstein", 9.0, 0.0, 3.5),
+				addNewBeer("Celebrator", "Doppelbock", "Ayinger Privatbrauerei", "Schwarz", 6.7, 24.0, 3.5),
+				addNewBeer("Insel Kreide", "Biere de Champagne / Biere Brut", "Rügener Insel-Brauerei", "Hellster Bernstein", 5.6, 0.0, 3.5),
+				addNewBeer("Trooper Red 'N' Black Porter", "Porter - English", "Robinsons Brewery", "Schwarz", 6.8, 0.0, 3.5),
+				addNewBeer("Rieder India Pale Ale", "IPA - American", "Brauerei Ried", "Bernstein", 6.0, 15.0, 3.5),
+				addNewBeer("Mälzer Märzen", "Maerzen", "Mälzer Brau- und Tafelhaus", "Heller Bernstein", 5.4, 20.0, 3.5),
+				//
+				addNewBeer("Bad Santa Christmas Special (2016 version)", "Festbier", "Privatbrauerei Schnaitl", "Dunkler Bernstein", 6.4, 31.0, 3.5),
+				addNewBeer("Pils Dunkel", "Pilsner - Other", "Gasthausbrauerei & Brennerei Nolte", "Dunkler Bernstein", 0.0, 0.0, 3.5),
+				addNewBeer("Pils", "Pilsner - Imperial / Double", "Barnstedter Brau-Kunz", "Apfelsaft", 6.0, 50.0, 3.5),
+				addNewBeer("Andechser Bergbock Hell", "Maibock / Heller (Helles) Bock", "Klosterbrauerei Andechs", "Heller Bernstein", 6.9, 0.0, 3.5),
+				addNewBeer("Boubon Barrel Bock ", "Bock", "Welde Braumanufaktur", "Schwarz", 6.6, 20.0, 3.5),
+				addNewBeer("Maple Smoked Weizenbock", "Weizenbock", "BRLO", "Schwarz", 6.5, 20.0, 3.5),
+				addNewBeer("Koutská dvanáctka 12%", "Pilsner - Czech", "Pivovar Kout na Šumavě", "Heller Bernstein", 5.0, 0.0, 3.5),
+				addNewBeer("Heroica Red Ale", "Red Ale - American Amber / Red", "Steamworks Brewing Company", "Rötlicher Bernstein", 5.6, 40.0, 3.5),
+				addNewBeer("Rasenmäher", "Pilsner - Other", "Ratsherrn Brauerei", "Heller Bernstein", 3.0, 28.0, 3.5),
+				addNewBeer("Backyard Beach Summer Ale ", "Pale Ale - American", "Ratsherrn Brauerei", "Heller Bernstein", 4.5, 24.0, 3.5),
+				addNewBeer("Easy", "Golden Ale", "CREW Republic", "Hellster Bernstein", 4.9, 22.0, 3.5),
+				addNewBeer("Sunday Easy Pale Ale", "Pale Ale - American", "AND UNION", "Heller Bernstein", 5.5, 35.0, 3.5),
+				addNewBeer("SHIPA Ariana", "IPA - American", "Kehrwieder Kreativbrauerei", "Bernstein", 7.5, 65.0, 3.5),
+				addNewBeer("Weltenburger Asam Bock", "Doppelbock", "Klosterbrauerei Weltenburg", "Schwarz", 6.9, 0.0, 3.5),
+				addNewBeer("Jaipur", "IPA - English", "Thornbridge Brewery", "Bernstein", 5.9, 55.0, 3.5),
+				addNewBeer("All Day IPA", "IPA - Session / India Session Ale", "Founders Brewing Co.", "Bernstein", 4.7, 42.0, 3.5),
+				addNewBeer("White Angel IPA", "IPA - White", "Steamworks Brewing Company", "Bernstein", 6.9, 60.0, 3.5),
+				addNewBeer("030 Berlin Pale Ale", "Pale Ale - American", "Brauerei Lemke", "Heller Bernstein", 5.0, 30.0, 3.5),
+				addNewBeer("Schwarze Pumpe", "Porter - Other", "Labieratorium", "Schwarz", 6.6, 45.0, 3.5),
+				addNewBeer("Thirsty Lady", "Pale Ale - American", "Heidenpeters", "Heller Bernstein", 4.8, 25.0, 3.5),
+				addNewBeer("Stone Go To IPA", "IPA - Session / India Session Ale", "Stone Brewing", "Bernstein", 4.5, 65.0, 3.5),
+				addNewBeer("Hoppy Bock", "Maibock / Heller (Helles) Bock", "Berliner Bier Barone", "Heller Bernstein", 6.5, 30.0, 3.5),
+				addNewBeer("High Diver - India Pale Ale ", "IPA - American", "Next Level Brewing", "Bernstein", 6.8, 66.0, 3.5),
+				addNewBeer("Hopfenauflauf", "Pale Ale - American", "Brew Age", "Heller Bernstein", 5.4, 35.0, 3.5),
+				addNewBeer("Imperial IPA", "IPA - Imperial / Double", "Camba Bavaria", "Bernstein", 8.9, 77.0, 3.5)
+				//
 				));
 				// @formatter:on
 		return beerRepository.findAll().size() + " beers drunk";
@@ -342,8 +395,9 @@ public class TappdController {
 				"Urban Chestnut Brewing Company Deutschland", "Velké Březno", "Victory Brewing Company",
 				"Vielanker Brauhaus", "Vier Vogel", "Vulkan Brauerei", "Warsteiner", "Weißbierbrauerei Hopf",
 				"Weissbräu Schwendl", "Welde Braumanufaktur", "Wiibroe Bryggeri", "Wildwuchs Brauwerk",
-				"Will-Bräu - Hochstiftliches Brauhaus in Bayern", "Wolfscraft", "Wychwood Brewery",
-				"Ørbæk Bryggeri", "Brewski", "Dry & Bitter Brewing Company");
+				"Will-Bräu - Hochstiftliches Brauhaus in Bayern", "Wolfscraft", "Wychwood Brewery", "Ørbæk Bryggeri",
+				"Brewski", "Dry & Bitter Brewing Company", "Tree House Brewing Company", "Pipeworks Brewing Company",
+				"Aslin Beer Company");
 
 		for (int i = 0; i < breweryNames.size(); i++) {
 			breweryNameRepository.save(new Brewery(breweryNames.get(i)));

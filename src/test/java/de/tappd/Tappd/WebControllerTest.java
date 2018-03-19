@@ -33,13 +33,13 @@ public class WebControllerTest {
     public void getEveryBreweryIsCreatingWellDone() throws Exception {
         mvc.perform(MockMvcRequestBuilders.get("/rest/brewery").accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
-                .andExpect(content().string(equalTo("297 Breweries created")));
+                .andExpect(content().string(equalTo("300 Breweries created")));
     }
     
     @Test
     public void getEveryBeerIsCreatingWellDone() throws Exception {
         mvc.perform(MockMvcRequestBuilders.get("/rest/beer").accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
-                .andExpect(content().string(equalTo("200 beers drunk")));
+                .andExpect(content().string(equalTo("250 beers drunk")));
     }
 }
