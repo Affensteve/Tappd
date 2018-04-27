@@ -2,6 +2,8 @@ package de.tappd.Tappd.UI;
 
 import static com.vaadin.server.Sizeable.Unit.PIXELS;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -33,6 +35,7 @@ import com.vaadin.ui.themes.ValoTheme;
 import de.tappd.Tappd.model.Beer;
 import de.tappd.Tappd.model.BeerStyle;
 import de.tappd.Tappd.model.Brewery;
+import de.tappd.Tappd.model.style.BeerStyles;
 import de.tappd.Tappd.process.BeerProcess;
 import de.tappd.Tappd.repo.BeerRepository;
 import de.tappd.Tappd.repo.BeerStyleRepository;
@@ -205,7 +208,7 @@ public class TappdUI extends UI {
 		disableButtonsIfNoFocus(false);
 
 		grid.setHeight(800, Unit.PIXELS);
-		grid.setWidth(1350, Unit.PIXELS);
+		grid.setWidth("100%");
 		grid.setColumns("id", "name", "beerStyle", "breweryName", "color", "abv", "ibu", "rating");
 
 		filter.setPlaceholder("Filter by name");
